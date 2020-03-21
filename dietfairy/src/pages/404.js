@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 
-class Home extends Component {
+class Error_404 extends Component {
   render() {
     return (
       <center>
-        <h2> home page</h2>
+        <h2> 404 Not Found </h2>
       </center>
     );
   }
 }
 
-export default Home;
+export default Error_404;
