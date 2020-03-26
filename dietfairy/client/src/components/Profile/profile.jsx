@@ -1,8 +1,6 @@
-///where stuff is saved "profile"
-
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import Image from "./Image";
+// import Image from "./Image";
 // import { API_URL } from "./";
 
 class Profile extends Component {
@@ -18,7 +16,7 @@ class Profile extends Component {
     };
 
     this.potential_username = "";
-    this.image_array = [];
+    this.recipe_array = [];
   }
 
   // do we allow users to check profiles if not logged in?
@@ -69,10 +67,10 @@ class Profile extends Component {
         that.setState({ recipes: responseJson.recipes });
       })
       .then(() => {
-        let image_array = [];
+        let recipe_array = [];
         for (let i = 0; i < that.state.recipes.length; i++) {
-          image_array.push(
-            <Image
+          recipe_array.push(
+            <Recipe
               key={i}
               imgurl={that.state.recipes[i].filename}
               uploader={that.state.username}
@@ -82,7 +80,7 @@ class Profile extends Component {
 
           // 5 recipes
           if (i >= 4) {
-            image_array.push(
+            recipe_array.push(
               <center key={"key end"}>
                 more recipes... but you've hit the history limit!
               </center>
@@ -91,7 +89,7 @@ class Profile extends Component {
           }
         }
 
-        this.image_array = image_array;
+        this.recipe_array = recipe_array;
         this.setState({ updated: true });
       });
   }
@@ -107,7 +105,7 @@ class Profile extends Component {
           <center>
             <h2> {this.state.username}'s profile </h2>
           </center>
-          {this.image_array}
+          {this.recipe_array}
         </div>
       );
     }
