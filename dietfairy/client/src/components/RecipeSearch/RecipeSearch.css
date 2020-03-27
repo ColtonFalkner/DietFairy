@@ -1,0 +1,17 @@
+
+form{
+    background: rgb(230, 118, 54);
+    border-radius: 15px;
+}
+.RecipeSearchLabel{
+    margin-left:20px;
+    margin-top: 10px
+}
+.submitBtn{
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+.form-control{
+    margin-left: 20px;
+    width: 95%
+}
