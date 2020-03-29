@@ -16,9 +16,9 @@ const CenterImage = () => {
     return images[Math.floor(Math.random() * (max - min)) + min];
   }, []);
 
-  const memoIngredient1 = useMemo(() => <Suggestion type="light" />, []);
-  const memoIngredient2 = useMemo(() => <Suggestion type="dark" />, []);
-  const memoIngredient3 = useMemo(() => <Suggestion type="exotic" />, []);
+  const memoIngredient1 = useMemo(() => <Suggestion type="first" />, []);
+  const memoIngredient2 = useMemo(() => <Suggestion type="second" />, []);
+  const memoIngredient3 = useMemo(() => <Suggestion type="third" />, []);
   return (
     <div
       css={css`

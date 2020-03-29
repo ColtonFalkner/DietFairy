@@ -24,7 +24,7 @@ export const cardStyles = css`
   }
 `;
 
-export const drinkNameStyles = css`
+export const foodNameStyles = css`
   grid-area: name;
   font-size: 1.1rem;
   padding-left: 1rem;

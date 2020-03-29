@@ -3,7 +3,7 @@ import Burger from "../Burger/Burger";
 import { Link } from "react-router-dom";
 import CloseIcon from "../../assets/close.png";
 import HomeIcon from "../../assets/home.png";
-import { useSearchQuery, useSidebar, useDrinkInfo } from "../../hooks";
+import { useSearchQuery, useSidebar, useFoodInfo } from "../../hooks";
 
 /** @jsx jsx */
 import { css, jsx } from "@emotion/core";
@@ -19,10 +19,10 @@ import {
 const Nav = () => {
   const { searchQuery, resetSearchQuery, handleChange } = useSearchQuery();
   const { handleSidebar } = useSidebar();
-  const { toggleDrinkInfoOff } = useDrinkInfo();
+  const { toggleFoodInfoOff } = useFoodInfo();
 
   const resetSearch = e => {
-    toggleDrinkInfoOff();
+    toggleFoodInfoOff();
     resetSearchQuery();
   };
 

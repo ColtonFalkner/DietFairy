@@ -16,7 +16,7 @@ export const showLoadingStyles = css`
   }
 `;
 
-export const showDrinkInfoStyles = css`
+export const showFoodInfoStyles = css`
   display: grid;
   grid-template-areas: "right";
   grid-template-columns: 1fr;

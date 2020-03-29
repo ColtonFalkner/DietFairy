@@ -108,7 +108,7 @@ const Login = () => {
                 font-style: italic;
               `}
             >
-              Login now to save your favorite cocktails!
+              Login now to save your favorite Recipes!
             </h1>
             <p
               css={css`

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Cocktails from "../Cocktails/Cocktails";
+import Eatings from "../Eatings/Eatings";
 import Welcome from "../Welcome/Welcome";
 import Suggestion from "../Suggestion/Suggestion";
 import Info from "../Info/Info";
 import Spinner from "../Spinner/Spinner";
-import { useCocktailsList, useDrinkInfo, useDictionary } from "../../hooks";
+import { useEatingsList, useFoodInfo, useDictionary } from "../../hooks";
 import alphabet from "../../utils/alphabet";
 
 /** @jsx jsx */
@@ -12,15 +12,15 @@ import { css, jsx } from "@emotion/core";
 import {
   showLoadingStyles,
   hideLoadingStyles,
-  showDrinkInfoStyles,
+  showFoodInfoStyles,
   regularLetterStyles,
   boldLetterStyles,
   suggestionStyles
 } from "./styles";
 
 const Grid = () => {
-  const { cocktails, loading } = useCocktailsList();
-  const { showDrinkInfo } = useDrinkInfo();
+  const { eatings, loading } = useEatingsList();
+  const { showFoodInfo } = useFoodInfo();
   const refDictionary = useDictionary(alphabet);
   const [firstLetters, setFirstLetters] = useState([]);
 
@@ -32,21 +32,21 @@ const Grid = () => {
   };
 
   useEffect(() => {
-    const first = [...new Set(cocktails.map(cocktail => cocktail.strDrink[0]))];
+    const first = [...new Set(eatings.map(eating => eating.strFood[0]))];
     setFirstLetters(first);
-  }, [cocktails]);
+  }, [eatings]);
 
   return (
     <main
       css={
-        cocktails.length <= 0
+        eatings.length <= 0
           ? hideLoadingStyles
-          : showDrinkInfo
-          ? showDrinkInfoStyles
+          : showFoodInfo
+          ? showFoodInfoStyles
           : showLoadingStyles
       }
     >
-      {cocktails.length <= 0 ? (
+      {eatings.length <= 0 ? (
         <Welcome />
       ) : (
         <>
@@ -91,20 +91,20 @@ const Grid = () => {
             >
               <p>Other popular searches:</p>
               <div css={suggestionStyles}>
-                <Suggestion type="light" />
+                <Suggestion type="first" />
               </div>
               <div css={suggestionStyles}>
-                <Suggestion type="dark" />
+                <Suggestion type="second" />
               </div>
               <div css={suggestionStyles}>
-                <Suggestion type="exotic" />
+                <Suggestion type="third" />
               </div>
             </div>
           </div>
 
           <div
             css={
-              showDrinkInfo
+              showFoodInfo
                 ? css`
                     grid-area: alphabet;
                     display: none;
@@ -158,7 +158,7 @@ const Grid = () => {
           </div>
           <div
             css={
-              showDrinkInfo
+              showFoodInfo
                 ? css`
                     display: none;
 
@@ -190,7 +190,7 @@ const Grid = () => {
             {loading ? (
               <Spinner />
             ) : (
-              <Cocktails refDictionary={refDictionary} />
+              <Eatings refDictionary={refDictionary} />
             )}
           </div>
           <div
@@ -199,7 +199,7 @@ const Grid = () => {
               background-color: var(--secondary);
             `}
           >
-            {showDrinkInfo && <Info />}
+            {showFoodInfo && <Info />}
           </div>
         </>
       )}

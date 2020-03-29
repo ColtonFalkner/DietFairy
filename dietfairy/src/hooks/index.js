@@ -16,16 +16,16 @@ export const useSearchQuery = () => {
   };
 };
 
-export const useCocktailsList = () => {
+export const useEatingsList = () => {
   const dispatch = useDispatch();
-  const { cocktails, loading } = useSelector(state => state.cocktails);
+  const { eatings, loading } = useSelector(state => state.eatings);
 
   return {
-    cocktails,
+    eatings,
     loading,
-    setCocktails: payload =>
+    setEatings: payload =>
       dispatch({ type: types.UPDATE_COCKTAILS, payload }),
-    clearCocktails: () => dispatch({ type: types.CLEAR_COCKTAILS }),
+    clearEatings: () => dispatch({ type: types.CLEAR_COCKTAILS }),
     toggleLoadingOn: () => dispatch({ type: types.TOGGLE_LOADING_ON }),
     toggleLoadingOff: () => dispatch({ type: types.TOGGLE_LOADING_OFF })
   };
@@ -41,24 +41,24 @@ export const useSidebar = () => {
   };
 };
 
-export const useDrinkInfo = () => {
+export const useFoodInfo = () => {
   const dispatch = useDispatch();
-  const { drink, nextDrink, prevDrink, showDrinkInfo } = useSelector(
-    state => state.drink
+  const { food, nextFood, prevFood, showFoodInfo } = useSelector(
+    state => state.food
   );
 
   return {
-    drink,
-    nextDrink,
-    prevDrink,
-    showDrinkInfo,
-    setDrink: payload => dispatch({ type: types.UPDATE_DRINK, payload }),
-    setNextDrink: payload =>
+    food,
+    nextFood,
+    prevFood,
+    showFoodInfo,
+    setFood: payload => dispatch({ type: types.UPDATE_DRINK, payload }),
+    setNextFood: payload =>
       dispatch({ type: types.UPDATE_NEXT_DRINK, payload }),
-    setPrevDrink: payload =>
+    setPrevFood: payload =>
       dispatch({ type: types.UPDATE_PREV_DRINK, payload }),
-    toggleDrinkInfoOn: () => dispatch({ type: types.SHOW_DRINK_INFO }),
-    toggleDrinkInfoOff: () => dispatch({ type: types.HIDE_DRINK_INFO })
+    toggleFoodInfoOn: () => dispatch({ type: types.SHOW_DRINK_INFO }),
+    toggleFoodInfoOff: () => dispatch({ type: types.HIDE_DRINK_INFO })
   };
 };
 
