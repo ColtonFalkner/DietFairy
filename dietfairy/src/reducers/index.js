@@ -1,14 +1,14 @@
 import { combineReducers } from "redux";
 import sidebar from "./sidebar";
-import cocktails from "./cocktails";
+import eatings from "./eatings";
 import searchQuery from "./searchQuery";
-import drink from "./drink";
+import food from "./food";
 import modal from "./modal";
 
 export default combineReducers({
   sidebar,
-  cocktails,
+  eatings,
   searchQuery,
-  drink,
+  food,
   modal
 });

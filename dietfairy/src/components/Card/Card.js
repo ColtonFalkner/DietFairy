@@ -1,31 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { useDrinkInfo } from "../../hooks";
+import { useFoodInfo } from "../../hooks";
 
 /** @jsx jsx */
 import { jsx, css } from "@emotion/core";
-import { cardStyles, drinkNameStyles, imageStyles } from "./styles";
+import { cardStyles, foodNameStyles, imageStyles } from "./styles";
 
-const Card = ({ strDrink, strDrinkThumb, idDrink }) => {
-  const { toggleDrinkInfoOn, setDrink } = useDrinkInfo();
-  const [drink, setOtherDrink] = useState({});
+const Card = ({ strFood, strFoodThumb, idFood }) => {
+  const { toggleFoodInfoOn, setFood } = useFoodInfo();
+  const [food, setOtherFood] = useState({});
 
   const handleClick = e => {
-    setDrink(drink);
-    toggleDrinkInfoOn();
+    setFood(food);
+    toggleFoodInfoOn();
   };
 
   useEffect(() => {
     const url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${idDrink}`;
     fetch(url)
       .then(raw => raw.json())
-      .then(({ drinks }) => {
-        setOtherDrink(drinks[0]);
+      .then(({ foods }) => {
+        setOtherFood(foods[0]);
       });
   }, []);
 
   return (
     <div css={cardStyles} onClick={handleClick} data-testid="card">
-      <div css={drinkNameStyles}>
+      <div css={foodNameStyles}>
         <p
           css={css`
             font-size: 0.6rem;
@@ -33,7 +33,7 @@ const Card = ({ strDrink, strDrinkThumb, idDrink }) => {
         >
           Name:
         </p>
-        {strDrink}
+        {strFood}
       </div>
       <div
         css={css`
@@ -49,9 +49,9 @@ const Card = ({ strDrink, strDrinkThumb, idDrink }) => {
         >
           Served in:
         </p>
-        {drink.strGlass}
+        {food.strGlass}
       </div>
-      <img css={imageStyles} src={strDrinkThumb} />
+      <img css={imageStyles} src={strFoodThumb} />
     </div>
   );
 };

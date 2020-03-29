@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { useSearchQuery, useDrinkInfo } from "../../hooks";
+import { useSearchQuery, useFoodInfo } from "../../hooks";
 import ingredients from "../../utils/ingredients";
 
 /** @jsx jsx */
@@ -8,7 +8,7 @@ import { linkStyles } from "./styles";
 
 const Suggestion = ({ type }) => {
   const { setSearchQuery } = useSearchQuery();
-  const { toggleDrinkInfoOff } = useDrinkInfo();
+  const { toggleFoodInfoOff } = useFoodInfo();
 
   const getRandomIngredient = type => {
     const min = 0;
@@ -23,7 +23,7 @@ const Suggestion = ({ type }) => {
   // On click, start searching for this ingredient and toggle info display off
   const setSearchandClearInfo = () => {
     setSearchQuery(`${ingredient}`);
-    toggleDrinkInfoOff();
+    toggleFoodInfoOff();
   };
 
   return (

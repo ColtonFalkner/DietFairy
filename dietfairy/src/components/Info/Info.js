@@ -1,5 +1,5 @@
 import React from "react";
-import { useDrinkInfo, useSearchQuery } from "../../hooks";
+import { useFoodInfo, useSearchQuery } from "../../hooks";
 import CloseIcon from "../../assets/close.png";
 
 /** @jsx jsx */
@@ -13,11 +13,11 @@ import {
 
 const Redirect = ({ ingredient }) => {
   const { setSearchQuery } = useSearchQuery();
-  const { toggleDrinkInfoOff } = useDrinkInfo();
+  const { toggleFoodInfoOff } = useFoodInfo();
 
   const resetSearch = () => {
     setSearchQuery(`${ingredient.toLowerCase()}`);
-    toggleDrinkInfoOff();
+    toggleFoodInfoOff();
   };
 
   return (
@@ -34,7 +34,7 @@ const Redirect = ({ ingredient }) => {
 };
 
 const Info = () => {
-  const { drink, toggleDrinkInfoOff } = useDrinkInfo();
+  const { food, toggleFoodInfoOff } = useFoodInfo();
 
   return (
     <div css={mainInfoStyles} data-testid="info">
@@ -47,7 +47,7 @@ const Info = () => {
           display: inline-flex;
           justify-content: space-between;
         `}
-        onClick={toggleDrinkInfoOff}
+        onClick={toggleFoodInfoOff}
       >
         <p
           css={css`
@@ -62,13 +62,13 @@ const Info = () => {
               font-weight: bold;
             `}
           >
-            {drink.strDrink.toUpperCase()}
+            {food.strFood.toUpperCase()}
           </span>
         </p>
         <img
           css={closeStyles}
           src={CloseIcon}
-          onClick={toggleDrinkInfoOff}
+          onClick={toggleFoodInfoOff}
           data-testid="close"
         />
       </div>
@@ -109,50 +109,50 @@ const Info = () => {
           </div>
           <div css={ingredientStyles}>
             <div>
-              <Redirect ingredient={drink.strIngredient1} />
+              <Redirect ingredient={food.strIngredient1} />
             </div>
             <div
               css={css`
                 font-size: 0.75rem;
               `}
             >
-              {drink.strMeasure1}
+              {food.strMeasure1}
             </div>
           </div>
           <div css={ingredientStyles}>
             <div>
-              <Redirect ingredient={drink.strIngredient2} />
+              <Redirect ingredient={food.strIngredient2} />
             </div>
-            <div css={measurementStyles}>{drink.strMeasure2}</div>
+            <div css={measurementStyles}>{food.strMeasure2}</div>
           </div>
           <div css={ingredientStyles}>
             <div>
-              <Redirect ingredient={drink.strIngredient3} />
+              <Redirect ingredient={food.strIngredient3} />
             </div>
-            <div css={measurementStyles}>{drink.strMeasure3}</div>
+            <div css={measurementStyles}>{food.strMeasure3}</div>
           </div>
-          {drink.strIngredient4 && (
+          {food.strIngredient4 && (
             <div css={ingredientStyles}>
               <div>
-                <Redirect ingredient={drink.strIngredient4} />
+                <Redirect ingredient={food.strIngredient4} />
               </div>
-              <div css={measurementStyles}>{drink.strMeasure4}</div>
+              <div css={measurementStyles}>{food.strMeasure4}</div>
             </div>
           )}
-          {drink.strIngredient5 && (
+          {food.strIngredient5 && (
             <div css={ingredientStyles}>
               <div>
-                <Redirect ingredient={drink.strIngredient5} />
+                <Redirect ingredient={food.strIngredient5} />
               </div>
-              <div css={measurementStyles}>{drink.strMeasure5}</div>
+              <div css={measurementStyles}>{food.strMeasure5}</div>
             </div>
           )}
-          {drink.strIngredient6 && (
+          {food.strIngredient6 && (
             <div css={ingredientStyles}>
               <div>
-                <Redirect ingredient={drink.strIngredient6} />
+                <Redirect ingredient={food.strIngredient6} />
               </div>
-              <div css={measurementStyles}>{drink.strMeasure6}</div>
+              <div css={measurementStyles}>{food.strMeasure6}</div>
             </div>
           )}
         </div>
@@ -171,7 +171,7 @@ const Info = () => {
             padding: 0.5rem;
             border-radius: 3%;
           `}
-          src={drink.strDrinkThumb}
+          src={food.strFoodThumb}
         />
       </div>
 
@@ -197,7 +197,7 @@ const Info = () => {
               Instructions
             </em>
           </p>
-          <p>{drink.strInstructions}</p>
+          <p>{food.strInstructions}</p>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 export default {
-  light: ["gin", "tequila", "vodka", "light rum"],
-  dark: ["rum", "whiskey", "scotch", "bourbon", "brandy", "cognac", "dark rum"],
-  exotic: [
+  first: ["gin", "tequila", "vodka", "light rum"],
+  second: ["rum", "whiskey", "scotch", "bourbon", "brandy", "cognac", "dark rum"],
+  third: [
     "triple sec",
     "sweet vermouth",
     "dry vermouth",
