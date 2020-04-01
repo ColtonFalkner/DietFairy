@@ -142,12 +142,12 @@ class App extends Component {
         <header>
           <Title />
         </header>
-        <Header user={this.state.user} />
+        {/* <Header user={this.state.user} /> */}
         {/* LINKS to our different 'pages' */}
         <DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
         {/*  ROUTES */}
         {/* <Route exact path="/" component={Home} /> */}
-        <Route exact path="/" render={() => <Home user={this.state.user} />} />
+        {/* <Route exact path="/" render={() => <Home user={this.state.user} />} /> */}
         <Route
           exact
           path="/login"
