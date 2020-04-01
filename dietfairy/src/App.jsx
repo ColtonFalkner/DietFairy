@@ -9,7 +9,7 @@ import Home from "./components/Home";
 import Title from "./components/Title";
 import Form from "./components/Form";
 import Recipes from "./components/Recipes";
-import keys from "./config/keys";
+// import keys from "./config/keys";
 
 const DisplayLinks = props => {
   if (props.loggedIn) {
