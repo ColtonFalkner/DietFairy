@@ -6,22 +6,22 @@ mongoose.Promise = global.Promise;
 let MONGO_URL;
 const MONGO_LOCAL_URL = "mongodb://localhost/mern-passport";
 
-// if (process.env.MONGODB_URI) {
-//   mongoose.connect(process.env.MONGODB_URI);
-//   MONGO_URL = process.env.MONGODB_URI;
-// } else {
-//   mongoose.connect(MONGO_LOCAL_URL); // local mongo url
-//   MONGO_URL = MONGO_LOCAL_URL;
-// }
-
 if (process.env.MONGODB_URI) {
-  mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
-  MONGO_URL =
-    "mongodb://user:thirteen13@ds117128.mlab.com:17128/heroku_nnwdl69g";
+  mongoose.connect(process.env.MONGODB_URI);
+  MONGO_URL = process.env.MONGODB_URI;
 } else {
-  mongoose.connect(MONGO_LOCAL_URL, { useMongoClient: true });
+  mongoose.connect(MONGO_LOCAL_URL); // local mongo url
   MONGO_URL = MONGO_LOCAL_URL;
 }
+
+// if (process.env.MONGODB_URI) {
+//   mongoose.connect(process.env.MONGODB_URI, { useMongoClient: true });
+//   MONGO_URL =
+//     "mongodb://user:thirteen13@ds117128.mlab.com:17128/heroku_nnwdl69g";
+// } else {
+//   mongoose.connect(MONGO_LOCAL_URL, { useMongoClient: true });
+//   MONGO_URL = MONGO_LOCAL_URL;
+// }
 
 // should mongoose.connection be put in the call back of mongoose.connect???
 const db = mongoose.connection;
