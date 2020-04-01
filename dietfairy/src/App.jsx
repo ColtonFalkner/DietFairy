@@ -75,9 +75,9 @@ class App extends Component {
     const from = Math.floor(Math.random() * 98);
     const to = from + 6;
     const url = `https://api.edamam.com/search?q=${recipeName}&app_id=${
-      process.env.APP_ID
+      process.ENV.APP_ID
     }&app_key=${
-      process.env.APP_KEY
+      process.ENV.APP_KEY
     }&from=${from.toString()}&to=${to.toString()}`;
     try {
       let response = await fetch(url);
