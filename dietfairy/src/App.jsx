@@ -34,7 +34,7 @@ const DisplayLinks = props => {
       <nav className="orange darken-2">
         <div className="nav-wrapper container">
           <ul className="nav">
-            <li className="nav-item">
+            <li className="nav-item ">
               <Link to="/" className="nav-link">
                 Home
               </Link>
