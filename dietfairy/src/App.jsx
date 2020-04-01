@@ -9,7 +9,7 @@ import Home from "./components/Home";
 import Title from "./components/Title";
 import Form from "./components/Form";
 import Recipes from "./components/Recipes";
-import keys from "./config/keys";
+// import keys from "./config/keys";
 
 const DisplayLinks = props => {
   if (props.loggedIn) {
@@ -75,8 +75,10 @@ class App extends Component {
     const from = Math.floor(Math.random() * 98);
     const to = from + 6;
     const url = `https://api.edamam.com/search?q=${recipeName}&app_id=${
-      keys.APP_ID
-    }&app_key=${keys.APP_KEY}&from=${from.toString()}&to=${to.toString()}`;
+      process.ENV.APP_ID
+    }&app_key=${
+      process.ENV.APP_KEY
+    }&from=${from.toString()}&to=${to.toString()}`;
     try {
       let response = await fetch(url);
       if (!response.ok) {
@@ -90,7 +92,7 @@ class App extends Component {
   };
   //----------------------------
   componentDidMount() {
-    axios.get("http://localhost:3000/auth/user").then(response => {
+    axios.get("https://diet-fairy.herokuapp.com/auth/user").then(response => {
       console.log(response);
       if (!!response.data.user) {
         // console.log('THERE IS A USER')
@@ -123,7 +125,7 @@ class App extends Component {
 
   _login(username, password) {
     axios
-      .post("http://localhost:3000/auth/login", {
+      .post("https://diet-fairy.herokuapp.com/auth/login", {
         username,
         password
       })
