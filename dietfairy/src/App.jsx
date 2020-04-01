@@ -9,9 +9,7 @@ import Home from "./components/Home";
 import Title from "./components/Title";
 import Form from "./components/Form";
 import Recipes from "./components/Recipes";
-
-const APP_KEY = "7e59a9b7c7391586be83698129538ea9";
-const APP_ID = "73e0142c";
+import keys from "./config/keys";
 
 const DisplayLinks = props => {
   if (props.loggedIn) {
@@ -73,7 +71,9 @@ class App extends Component {
     const recipeName = e.target.elements.recipe.value;
     const from = Math.floor(Math.random() * 98);
     const to = from + 6;
-    const url = `https://api.edamam.com/search?q=${recipeName}&app_id=${APP_ID}&app_key=${APP_KEY}&from=${from.toString()}&to=${to.toString()}`;
+    const url = `https://api.edamam.com/search?q=${recipeName}&app_id=${
+      keys.APP_ID
+    }&app_key=${keys.APP_KEY}&from=${from.toString()}&to=${to.toString()}`;
     try {
       let response = await fetch(url);
       if (!response.ok) {
@@ -142,12 +142,12 @@ class App extends Component {
         <header>
           <Title />
         </header>
-        <Header user={this.state.user} />
+        {/* <Header user={this.state.user} /> */}
         {/* LINKS to our different 'pages' */}
         <DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
         {/*  ROUTES */}
         {/* <Route exact path="/" component={Home} /> */}
-        <Route exact path="/" render={() => <Home user={this.state.user} />} />
+        {/* <Route exact path="/" render={() => <Home user={this.state.user} />} /> */}
         <Route
           exact
           path="/login"
