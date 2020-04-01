@@ -92,7 +92,7 @@ class App extends Component {
   };
   //----------------------------
   componentDidMount() {
-    axios.get("http://localhost:3001/auth/user").then(response => {
+    axios.get("https://diet-fairy.herokuapp.com/auth/user").then(response => {
       console.log(response);
       if (!!response.data.user) {
         // console.log('THERE IS A USER')
@@ -125,7 +125,7 @@ class App extends Component {
 
   _login(username, password) {
     axios
-      .post("http://localhost:3001/auth/login", {
+      .post("https://diet-fairy.herokuapp.com/auth/login", {
         username,
         password
       })
