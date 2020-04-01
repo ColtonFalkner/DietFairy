@@ -23,7 +23,7 @@ class SignupForm extends Component {
     event.preventDefault();
     // TODO - validate!
     axios
-      .post("http://localhost:3001/auth/signup", {
+      .post("https://diet-fairy.herokuapp.com/auth/signup", {
         username: this.state.username,
         password: this.state.password
       })
