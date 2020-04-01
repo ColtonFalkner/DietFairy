@@ -31,24 +31,27 @@ const DisplayLinks = props => {
     );
   } else {
     return (
-      <nav className="navbar">
-        <ul className="nav">
-          <li className="nav-item">
-            <Link to="/" className="nav-link">
-              Home
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/login" className="nav-link">
-              login
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/signup" className="nav-link">
-              sign up
-            </Link>
-          </li>
-        </ul>
+      <nav className="orange darken-2">
+        <div className="nav-wrapper container">
+          <ul className="nav">
+            <li className="nav-item">
+              <Link to="/" className="nav-link">
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/login" className="nav-link">
+                Login
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/signup" className="nav-link">
+                Sign Up
+              </Link>
+            </li>
+          </ul>
+          <span className="brand-logo center">dietFairy</span>
+        </div>
       </nav>
     );
   }
@@ -139,9 +142,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>
-          <Title />
-        </header>
+        <header>{/* <Title /> */}</header>
         {/* <Header user={this.state.user} /> */}
         {/* LINKS to our different 'pages' */}
         <DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
