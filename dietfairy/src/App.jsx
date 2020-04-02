@@ -145,7 +145,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(APP_ID);
     return (
       <div className="App">
         <header></header>
