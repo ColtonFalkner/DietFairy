@@ -12,6 +12,7 @@ import Recipes from "./components/Recipes";
 // import keys from "./config/keys";
 const APP_ID = process.env.APP_ID;
 const APP_KEY = process.env.APP_KEY;
+
 const DisplayLinks = props => {
   if (props.loggedIn) {
     return (
