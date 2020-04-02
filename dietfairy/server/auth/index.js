@@ -72,4 +72,9 @@ router.post("/signup", (req, res) => {
   });
 });
 
+router.post("/api/recipe", (req, res) => {
+  console.log(req.body);
+  res.json("done");
+});
+
 module.exports = router;
