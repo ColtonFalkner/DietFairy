@@ -1,3 +1,6 @@
+// require("dotenv").config();
+// import "dotenv/config";
+import keys from "./config/keys";
 import React, { Component } from "react";
 import axios from "axios";
 import { Route, Link } from "react-router-dom";
@@ -9,9 +12,12 @@ import Home from "./components/Home";
 import Title from "./components/Title";
 import Form from "./components/Form";
 import Recipes from "./components/Recipes";
-// import keys from "./config/keys";
-// const APP_ID = process.env.APP_ID;
-// const APP_KEY = process.env.APP_KEY;
+
+const APP_ID =
+  process.env.NODE_ENV === "development" ? keys.APP_ID : process.env.APP_ID;
+
+const APP_KEY =
+  process.env.NODE_ENV === "development" ? keys.APP_KEY : process.env.APP_KEY;
 
 const DisplayLinks = props => {
   if (props.loggedIn) {
@@ -76,7 +82,7 @@ class App extends Component {
     const recipeName = e.target.elements.recipe.value;
     const from = Math.floor(Math.random() * 98);
     const to = from + 6;
-    const url = `https://api.edamam.com/search?q=${recipeName}&app_id=73e0142c&app_key=7e59a9b7c7391586be83698129538ea9&from=${from.toString()}&to=${to.toString()}`;
+    const url = `https://api.edamam.com/search?q=${recipeName}&app_id=${APP_ID}&app_key=${APP_KEY}&from=${from.toString()}&to=${to.toString()}`;
     try {
       let response = await fetch(url);
       if (!response.ok) {
@@ -93,7 +99,6 @@ class App extends Component {
     axios.get("https://diet-fairy.herokuapp.com/auth/user").then(response => {
       console.log(response);
       if (!!response.data.user) {
-        // console.log('THERE IS A USER')
         this.setState({
           loggedIn: true,
           user: response.data.user
@@ -140,9 +145,10 @@ class App extends Component {
   }
 
   render() {
+    console.log(APP_ID);
     return (
       <div className="App">
-        <header>{/* <Title /> */}</header>
+        <header></header>
         {/* <Header user={this.state.user} /> */}
         {/* LINKS to our different 'pages' */}
         <DisplayLinks _logout={this._logout} loggedIn={this.state.loggedIn} />
