@@ -1,6 +1,6 @@
 // require("dotenv").config();
 // import "dotenv/config";
-import keys from "./config/keys";
+// import keys from "./config/keys";
 import React, { Component } from "react";
 import axios from "axios";
 import { Route, Link } from "react-router-dom";
@@ -13,11 +13,11 @@ import Title from "./components/Title";
 import Form from "./components/Form";
 import Recipes from "./components/Recipes";
 
-const APP_ID =
-  process.env.NODE_ENV === "development" ? keys.APP_ID : process.env.APP_ID;
+// const APP_ID =
+//   process.env.NODE_ENV === "development" ? keys.APP_ID : process.env.APP_ID;
 
-const APP_KEY =
-  process.env.NODE_ENV === "development" ? keys.APP_KEY : process.env.APP_KEY;
+// const APP_KEY =
+//   process.env.NODE_ENV === "development" ? keys.APP_KEY : process.env.APP_KEY;
 
 const DisplayLinks = props => {
   if (props.loggedIn) {
