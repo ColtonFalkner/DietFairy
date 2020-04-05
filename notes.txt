@@ -1,0 +1,9 @@
+I reorganized the code to have the server.js at the root level and a client folder which holds the whole react app.
+
+There are 2 separate package.json files; one for the server (node), and one for the client (react)
+
+The API keys have been hidden on the server.  So now the call from the fron end makes a call to our server, not edimam
+
+A few other changes I can't remember.  The PR will show them.
+
+I believe this should now work with heroku after you set APP_ID and APP_KEY on heroku
