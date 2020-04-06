@@ -1,25 +1,18 @@
-// require("dotenv").config();
-// import "dotenv/config";
-import keys from "./config/keys";
-import React, { Component } from "react";
-import axios from "axios";
-import { Route, Link } from "react-router-dom";
 import "./App.css";
-import LoginForm from "./components/Login/LoginForm";
-import SignupForm from "./components/SignupForm";
+
+import { Link, Route } from "react-router-dom";
+import React, { Component } from "react";
+
+import Form from "./components/Form";
 import Header from "./components/Header";
 import Home from "./components/Home";
-import Title from "./components/Title";
-import Form from "./components/Form";
+import LoginForm from "./components/Login/LoginForm";
 import Recipes from "./components/Recipes";
+import SignupForm from "./components/SignupForm";
+import Title from "./components/Title";
+import axios from "axios";
 
-const APP_ID =
-  process.env.NODE_ENV === "development" ? keys.APP_ID : process.env.APP_ID;
-
-const APP_KEY =
-  process.env.NODE_ENV === "development" ? keys.APP_KEY : process.env.APP_KEY;
-
-const DisplayLinks = props => {
+const DisplayLinks = (props) => {
   if (props.loggedIn) {
     return (
       <nav className="navbar">
@@ -71,20 +64,21 @@ class App extends Component {
     this.state = {
       loggedIn: false,
       user: null,
-      recipes: []
+      recipes: [],
     };
     this._logout = this._logout.bind(this);
     this._login = this._login.bind(this);
   }
   // ---------------------------
-  getRecipe = async e => {
+  getRecipe = async (e) => {
     e.preventDefault();
     const recipeName = e.target.elements.recipe.value;
     const from = Math.floor(Math.random() * 98);
     const to = from + 6;
-    const url = `https://api.edamam.com/search?q=${recipeName}&app_id=${"73e0142c"}&app_key=${"7e59a9b7c7391586be83698129538ea9"}&from=${from.toString()}&to=${to.toString()}`;
     try {
-      let response = await fetch(url);
+      let response = await fetch(
+        `api/getRecipe?q=${recipeName}&from=${from}&to=${to}`
+      );
       if (!response.ok) {
         throw new Error("Request failed due to client or server error.");
       }
@@ -96,17 +90,17 @@ class App extends Component {
   };
   //----------------------------
   componentDidMount() {
-    axios.get("https://diet-fairy.herokuapp.com/auth/user").then(response => {
+    axios.get("https://diet-fairy.herokuapp.com/auth/user").then((response) => {
       console.log(response);
       if (!!response.data.user) {
         this.setState({
           loggedIn: true,
-          user: response.data.user
+          user: response.data.user,
         });
       } else {
         this.setState({
           loggedIn: false,
-          user: null
+          user: null,
         });
       }
     });
@@ -115,12 +109,12 @@ class App extends Component {
   _logout(event) {
     event.preventDefault();
     // console.log('logging out')
-    axios.post("/auth/logout").then(response => {
+    axios.post("/auth/logout").then((response) => {
       // console.log(response.data)
       if (response.status === 200) {
         this.setState({
           loggedIn: false,
-          user: null
+          user: null,
         });
       }
     });
@@ -130,15 +124,15 @@ class App extends Component {
     axios
       .post("https://diet-fairy.herokuapp.com/auth/login", {
         username,
-        password
+        password,
       })
-      .then(response => {
+      .then((response) => {
         // console.log(response)
         if (response.status === 200) {
           // update the state
           this.setState({
             loggedIn: true,
-            user: response.data.user
+            user: response.data.user,
           });
         }
       });
