@@ -32,7 +32,7 @@ if (process.env.NODE_ENV === "production") {
 } else {
   app.use(express.static("public"));
 }
-
+//Routes
 app.use("/auth", require("./auth"));
 
 app.get("/api/getRecipe", async (req, res) => {
