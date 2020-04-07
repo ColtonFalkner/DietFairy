@@ -33,6 +33,8 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("public"));
 }
 
+app.use("/auth", require("./auth"));
+
 app.get("/api/getRecipe", async (req, res) => {
   const { q, from, to } = req.query;
   const url = `https://api.edamam.com/search?q=${q}&app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}&from=${from}&to=${to}`;
