@@ -1,19 +1,24 @@
-const passport = require('passport')
-const LocalStrategy = require('./localStrategy')
-const GoogleStratgey = require('./googleStrategy')
-const User = require('../db/models/user')
+const passport = require("passport");
+const LocalStrategy = require("./localStrategy");
+const GoogleStratgey = require("./googleStrategy");
+const User = require("../db/models/user");
 
 passport.serializeUser((user, done) => {
-	done(null, { _id: user._id })
-})
+  done(null, { _id: user._id });
+});
 
 passport.deserializeUser((id, done) => {
-	const matchingUser = await User.findOne({ _id: id }).exec();
-  	done(null, matchingUser);
-})
+  User.findOne(
+    { _id: id },
+    "firstName lastName photos local.username",
+    (err, user) => {
+      done(null, user);
+    }
+  );
+});
 
 // ==== Register Strategies ====
-passport.use(LocalStrategy)
-passport.use(GoogleStratgey)
+passport.use(LocalStrategy);
+passport.use(GoogleStratgey);
 
-module.exports = passport
+module.exports = passport;
